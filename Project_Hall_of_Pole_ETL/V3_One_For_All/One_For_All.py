@@ -1,6 +1,4 @@
-import os
 import re
-import glob
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
@@ -8,15 +6,15 @@ import pandas as pd
 import datetime
 from datetime import datetime
 
-from sqlalchemy import create_engine
-from sqlalchemy import text
 
+# Shift + Enter, to run the user input or the preset URls
 
-# Get user input for a list of URLs
-user_input = input("Enter URLs separated by commas: ")
+# user_input = input("Enter URLs separated by commas: ")
 
+# Or replace "input("Enter URLs separated by commas: ")" with for example:
 
-# user_input = "https://www.eversports.de/sw/yoga-and-pole-art-by-selina"
+user_input = ["https://www.eversports.de/sw/poda-studio",
+              'https://www.eversports.de/sw/schoenheitstanz-studio']
 
 
 def workshop_list(url):
@@ -96,9 +94,9 @@ def workshop_list(url):
     poleworkshop_list_df['Version'] = datetime.now().strftime(
         "%Y-%m-%d %H:%M:%S")
 
-    # create the directory if it doesn't exist
-    if not os.path.exists("Workshop_List_CSV"):
-        os.makedirs("Workshop_List_CSV")
+    # # create the directory if it doesn't exist
+    # if not os.path.exists("Workshop_List_CSV"):
+    #     os.makedirs("Workshop_List_CSV")
 
     # save the CSV file in the "CSV" directory
     # poleworkshop_list_df.to_csv(
@@ -228,9 +226,9 @@ def workshop_overview(url):
     except:
         workshop_overview_df["Level"] = 0
 
-    # create the "CSV" directory if it does not exist
-    if not os.path.exists("Workshop_CSV"):
-        os.makedirs("Workshop_CSV")
+    # # create the "CSV" directory if it does not exist
+    # if not os.path.exists("Workshop_CSV"):
+    #     os.makedirs("Workshop_CSV")
 
     # save the CSV file in the "CSV" directory
     # workshop_overview_df.to_csv(
@@ -280,12 +278,12 @@ def pole_overview(url):
     # Loop through each element in the container
     for item in starting_price_:
         # Starting Price
-        starting_price = item.find(
+        starting_price_ = item.find(
             'p', class_='MuiTypography-root MuiTypography-body1 css-13ps6ou').text
 
-        # Taster Course Price
-        taster_course_price = item.find(
-            'p', class_="MuiTypography-root MuiTypography-body1 css-13ps6ou").text
+        # # Taster Course Price
+        # taster_course_price = item.find(
+        #     'p', class_="MuiTypography-root MuiTypography-body1 css-13ps6ou").text
 
     # Rating
     div_container = soup.find('div', class_='css-1oqii6')
@@ -350,8 +348,8 @@ def pole_overview(url):
         'Stadt': town,
         'Adresse': address,
         'Pole Studio Beschreibung': pole_studio_description,
-        'Start Preis': starting_price,
-        'Schnupperkurspreis': taster_course_price,
+        'Start Preis': starting_price_,
+        # 'Schnupperkurspreis': taster_course_price,
         'Ratingscore': ratingscore,
         'Reviewanzahl': ratingcount,
         # 'Rating Faktoren': [ratingfactors],
@@ -374,10 +372,9 @@ def pole_overview(url):
     # Drop Rating Fact
     # pole_studio_overview_df = pole_studio_overview_df.drop(["Rating Faktoren"], axis=1)
 
-
-    # create the "CSV" directory if it does not exist
-    if not os.path.exists("PoleStudio_CSV"):
-        os.makedirs("PoleStudio_CSV")
+    # # create the "CSV" directory if it does not exist
+    # if not os.path.exists("PoleStudio_CSV"):
+    #     os.makedirs("PoleStudio_CSV")
 
     # save the CSV file in the "CSV" directory
     # pole_studio_overview_df.to_csv(
@@ -403,7 +400,7 @@ def super_function(urls):
 
     # Save the CSV file in the "CSV" directory with timestamp
     all_workshops_didi_df.to_csv(
-        f"Workshop_List_CSV/1_Workshops_List_Didi_Ws_{timestamp}.csv", index=False)
+        f"1_Workshops_List_Didi_Ws_{timestamp}.csv", index=False)
 
     # Workshop Overview
     url_list = all_workshops_didi_df["Workshop Seite Eversports"].to_list()
@@ -423,7 +420,7 @@ def super_function(urls):
 
     # Save the CSV file in the "CSV" directory with timestamp
     all_workshops_overview_didi_df.to_csv(
-        f"Workshop_CSV/1_Workshop_Overview_Didi_e_{timestamp}.csv", index=False)
+        f"1_Workshop_Overview_Didi_e_{timestamp}.csv", index=False)
 
     # Pole Studios Overview
     url_list = all_workshops_overview_didi_df['PoleStudio Eversports Seite'].tolist(
@@ -441,29 +438,40 @@ def super_function(urls):
 
     # Save the CSV file in the "CSV" directory with timestamp
     all_polestudios_overview_didi_df.to_csv(
-        f"PoleStudio_CSV/1_PoleStudio_Overview_Didi_{timestamp}.csv", index=False)
+        f"1_PoleStudio_Overview_Didi_{timestamp}.csv", index=False)
 
     return all_workshops_didi_df, all_workshops_overview_didi_df, all_polestudios_overview_didi_df
 
 
-# Get user input for a list of URLs
-# user_input = "https://www.eversports.de/sw/yoga-and-pole-art-by-selina"
+# # Get user input for a list of URLs
+# user_input = "https://www.eversports.de/sw/poda-studio"
 
 # user_input = input("Enter URLs separated by commas: ")
+
+# Convert list to a string
+user_input = ','.join(user_input)
+
+# Split the string into a list
+url_list = [url.strip() for url in user_input.split(',')]
+
 
 # Split the input string into a list of URLs
 url_list = [url.strip() for url in user_input.split(',')]
 
 # Call the super_function with the list of URLs
-workshops_df, workshops_overview_df, polestudios_overview_df = super_function(url_list)
+workshops_df, workshops_overview_df, polestudios_overview_df = super_function(
+    url_list)
+
 
 # Display the DataFrames
 print(workshops_df)
 print(workshops_overview_df)
 print(polestudios_overview_df)
 
+
 if __name__ == "__main__":
-    all_workshops_didi_df, all_workshops_overview_didi_df, all_pole_studio_overview_didi_df = super_function(user_input)
+    all_workshops_didi_df, all_workshops_overview_didi_df, all_pole_studio_overview_didi_df = super_function(
+        user_input)
 
     print("Workshops List DataFrame")
     print(all_workshops_didi_df.head())
@@ -473,4 +481,3 @@ if __name__ == "__main__":
 
     print("Pole Studio Overview DataFrame")
     print(all_pole_studio_overview_didi_df.head())
-

@@ -1,6 +1,4 @@
 import re
-import os
-import glob
 import pandas as pd
 from PoleStudio_Overview_Func import pole_overview
 from Workshops_List_Func import workshop_list
