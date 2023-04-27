@@ -131,8 +131,8 @@ def workshop_overview(url):
         workshop_overview_df["Level"] = 0
 
     # create the "CSV" directory if it does not exist
-    if not os.path.exists("Workshop_CSV"):
-        os.makedirs("Workshop_CSV")
+    # if not os.path.exists("Workshop_CSV"):
+        # os.makedirs("Workshop_CSV")
 
     # save the CSV file in the "CSV" directory
     # workshop_overview_df.to_csv(

@@ -146,8 +146,8 @@ def pole_overview(url):
     # pole_studio_overview_df.to_csv('pole_studio_overview.csv', index=False)
 
     # create the "CSV" directory if it does not exist
-    if not os.path.exists("PoleStudio_CSV"):
-        os.makedirs("PoleStudio_CSV")
+    # if not os.path.exists("PoleStudio_CSV"):
+        # os.makedirs("PoleStudio_CSV")
 
     # save the CSV file in the "CSV" directory
     # pole_studio_overview_df.to_csv(

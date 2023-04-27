@@ -12,6 +12,13 @@ from sqlalchemy import create_engine
 from sqlalchemy import text
 
 
+# Get user input for a list of URLs
+user_input = input("Enter URLs separated by commas: ")
+
+
+# user_input = "https://www.eversports.de/sw/yoga-and-pole-art-by-selina"
+
+
 def workshop_list(url):
 
     # Send a GET request to the webpage
@@ -440,7 +447,7 @@ def super_function(urls):
 
 
 # Get user input for a list of URLs
-user_input = "https://www.eversports.de/sw/yoga-and-pole-art-by-selina"
+# user_input = "https://www.eversports.de/sw/yoga-and-pole-art-by-selina"
 
 # user_input = input("Enter URLs separated by commas: ")
 

@@ -87,8 +87,8 @@ def workshop_list(url):
         "%Y-%m-%d %H:%M:%S")
 
     # create the directory if it doesn't exist
-    if not os.path.exists("Workshop_List_CSV"):
-        os.makedirs("Workshop_List_CSV")
+    # if not os.path.exists("Workshop_List_CSV"):
+        # os.makedirs("Workshop_List_CSV")
 
     # save the CSV file in the "CSV" directory
     # poleworkshop_list_df.to_csv(

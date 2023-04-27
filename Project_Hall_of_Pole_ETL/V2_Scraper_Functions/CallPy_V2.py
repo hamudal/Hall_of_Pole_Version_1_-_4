@@ -26,7 +26,7 @@ def super_function(urls):
 
     # Save the CSV file in the "CSV" directory with timestamp
     all_workshops_didi_df.to_csv(
-        f"Workshop_List_CSV/1_Workshops_List_Didi_Ws_{timestamp}.csv", index=False)
+        f"1_Workshops_List_Didi_Ws_{timestamp}.csv", index=False)
 
     # Workshop Overview
     url_list = all_workshops_didi_df["Workshop Seite Eversports"].to_list()
@@ -46,7 +46,7 @@ def super_function(urls):
 
     # Save the CSV file in the "CSV" directory with timestamp
     all_workshops_overview_didi_df.to_csv(
-        f"Workshop_CSV/1_Workshop_Overview_Didi_e_{timestamp}.csv", index=False)
+        f"1_Workshop_Overview_Didi_e_{timestamp}.csv", index=False)
 
     # Pole Studios Overview
     url_list = all_workshops_overview_didi_df['PoleStudio Eversports Seite'].tolist(
@@ -64,6 +64,6 @@ def super_function(urls):
 
     # Save the CSV file in the "CSV" directory with timestamp
     all_polestudios_overview_didi_df.to_csv(
-        f"PoleStudio_CSV/1_PoleStudio_Overview_Didi_{timestamp}.csv", index=False)
+        f"1_PoleStudio_Overview_Didi_{timestamp}.csv", index=False)
 
     return all_workshops_didi_df, all_workshops_overview_didi_df, all_polestudios_overview_didi_df
