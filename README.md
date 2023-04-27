@@ -12,6 +12,8 @@ The project consists of three versions: V1, V2, and V3. V1 was my first attempt 
 
 V2 is the most stable version, building on V1. I focused on readability and reusability of the code itself. We have six scripts here, including the main function that imports all function scripts such as the PoleStudio_Overview_Func, Workshops_List_Func, Workshop_Overview_Func, and a function that calls all three scripts, putting them into a function that combines them all into one function, which is called CallPy.
 
+----
+
 The main functions will import everything from call by the 1_main_Func:
 
 # Example URLs: https://www.eversports.de/sw/poda-studio, https://www.eversports.de/sw/poda-studio
@@ -20,20 +22,8 @@ The main functions will import everything from call by the 1_main_Func:
 
 user_input = input("Enter URLs separated by commas: ")
 
-# Split the input string into a list of URLs
 
-url_list = [url.strip() for url in user_input.split(',')]
-
-# Call the super_function with the list of URLs
-
-workshops_df, workshops_overview_df, polestudios_overview_df = super_function(url_list)
-
-# Display the DataFrames
-
-print(workshops_df)
-print(workshops_overview_df)
-print(polestudios_overview_df)
-
+----
 V3 combines all scripts into one to see which case is more useful or easier to debug. However, V2 is the most reliable and readable script, and I would advise you to try V1 and V2 first.
 
 Usage
