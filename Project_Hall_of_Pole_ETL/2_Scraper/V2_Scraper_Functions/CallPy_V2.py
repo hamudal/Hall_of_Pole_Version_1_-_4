@@ -1,7 +1,7 @@
 import re
 import pandas as pd
 from PoleStudio_Overview_Func import pole_overview
-from Workshops_List_Func import workshop_list
+from Workshops_List_Func_V2 import workshop_list
 from Workshop_Overview_Func import workshop_overview
 
 import datetime
