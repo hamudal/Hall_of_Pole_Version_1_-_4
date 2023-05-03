@@ -1,2 +1,18 @@
-V2_Scraper_Functions\SQl_Database\V2/
-C:\Users\hamud\OneDrive\Dokumente\GitHub\Current-Projects\Project_Hall_of_Pole_ETL\Version Didi\SQl_Database\V2/
+Project_Hall_of_Pole_ETL/V2_Scraper_Functions/SQl_Database/V2/SQL_Base_Script.ipynb
+Project_Hall_of_Pole_ETL/Version Didi/SQl_Database/V2/SQL_Base_Script.ipynb
+
+
+# Ignore Python virtual environment
+myenv/
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore any compiled Python files
+*.pyc
+
+# Ignore any logs
+*.log
+
+# Ignore any backup files
+*~
