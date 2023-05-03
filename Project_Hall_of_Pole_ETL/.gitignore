@@ -3,7 +3,7 @@ Project_Hall_of_Pole_ETL/Version Didi/SQl_Database/V2/SQL_Base_Script.ipynb
 
 
 # Ignore Python virtual environment
-/Project_Hall_of_Pole_ETL/myenv
+/Project_Hall_of_Pole_ETL/myenv/
 
 # Ignore Jupyter Notebook checkpoints
 .ipynb_checkpoints/
