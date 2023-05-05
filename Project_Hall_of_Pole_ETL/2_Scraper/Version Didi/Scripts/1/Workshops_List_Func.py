@@ -76,6 +76,7 @@ def workshop_list(url):
         # 'Workshop Datum': workshops_dates,
         # 'Workshop Preis': workshop_prices,
         'Workshop Seite Eversports': workshop_page_eversports,
+        'Eversports Page': url
 
     }
 
