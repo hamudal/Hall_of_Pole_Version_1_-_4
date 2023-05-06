@@ -1,0 +1,9 @@
+# .gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Data
+Data/
+env_truth_seeker/
