@@ -112,6 +112,9 @@ def pole_overview(url):
     address = location.split(',')[1]
     town = location.split(',')[0]
     plz = location.split(',')[1].split(' ')[1]
+    
+
+    taster_course_price = 0
 
     # create a dictionary from the given lists
     pole_studio_overview = {

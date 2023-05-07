@@ -13,8 +13,11 @@ from datetime import datetime
 
 # Or replace "input("Enter URLs separated by commas: ")" with for example:
 
-user_input = ["https://www.eversports.de/sw/poda-studio",
-              'https://www.eversports.de/sw/schoenheitstanz-studio']
+user_input = pd.read_csv(r"all_pole_studios_germany_&_Didi_valid_urls.csv")
+user_input = user_input["Valid_URL"].tolist()
+
+# ["https://www.eversports.de/sw/poda-studio",
+#               'https://www.eversports.de/sw/schoenheitstanz-studio']
 
 
 def workshop_list(url):

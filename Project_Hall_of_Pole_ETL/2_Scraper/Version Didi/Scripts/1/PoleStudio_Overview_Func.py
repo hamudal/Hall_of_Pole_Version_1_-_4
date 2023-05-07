@@ -1,11 +1,7 @@
-import os
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
-
 from datetime import datetime
-from sqlalchemy import create_engine
-from sqlalchemy import text
 
 
 def pole_overview(url):
@@ -46,14 +42,15 @@ def pole_overview(url):
     starting_price_ = soup.find_all('div', class_="css-1vt08d7")
     list_5 = soup.find_all('div', class_="css-sge262")
 
-    starting_price = 0
-
-    try:
+    # Loop through each element in the container
+    for item in starting_price_:
         # Starting Price
-        starting_price = item.find(
+        starting_price_ = item.find(
             'p', class_='MuiTypography-root MuiTypography-body1 css-13ps6ou').text
-    except AttributeError:
-        starting_price = 0
+
+        # # Taster Course Price
+        # taster_course_price = item.find(
+        #     'p', class_="MuiTypography-root MuiTypography-body1 css-13ps6ou").text
 
     # Rating
     div_container = soup.find('div', class_='css-1oqii6')
@@ -118,7 +115,8 @@ def pole_overview(url):
         'Stadt': town,
         'Adresse': address,
         'Pole Studio Beschreibung': pole_studio_description,
-        'Start Preis': starting_price,
+        'Start Preis': starting_price_,
+        # 'Schnupperkurspreis': taster_course_price,
         'Ratingscore': ratingscore,
         'Reviewanzahl': ratingcount,
         # 'Rating Faktoren': [ratingfactors],
@@ -131,6 +129,9 @@ def pole_overview(url):
     # create pandas dataframe
     pole_studio_overview_df = pd.DataFrame([pole_studio_overview])
 
+    # create pandas dataframe
+    pole_studio_overview_df = pd.DataFrame([pole_studio_overview])
+
     # Make a datastamp
     pole_studio_overview_df['Version'] = datetime.now().strftime(
         "%Y-%m-%d %H:%M:%S")
@@ -138,11 +139,9 @@ def pole_overview(url):
     # Drop Rating Fact
     # pole_studio_overview_df = pole_studio_overview_df.drop(["Rating Faktoren"], axis=1)
 
-    # pole_studio_overview_df.to_csv('pole_studio_overview.csv', index=False)
-
-    # create the "CSV" directory if it does not exist
+    # # create the "CSV" directory if it does not exist
     # if not os.path.exists("PoleStudio_CSV"):
-    # os.makedirs("PoleStudio_CSV")
+    #     os.makedirs("PoleStudio_CSV")
 
     # save the CSV file in the "CSV" directory
     # pole_studio_overview_df.to_csv(
