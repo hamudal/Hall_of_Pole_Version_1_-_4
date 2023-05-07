@@ -55,8 +55,6 @@ def pole_overview(url):
     except AttributeError:
         starting_price = 0
 
-
-            
     # Rating
     div_container = soup.find('div', class_='css-1oqii6')
     div_container.find_all('p')
@@ -112,9 +110,6 @@ def pole_overview(url):
     address = location.split(',')[1]
     town = location.split(',')[0]
     plz = location.split(',')[1].split(' ')[1]
-    
-
-    taster_course_price = 0
 
     # create a dictionary from the given lists
     pole_studio_overview = {
@@ -124,7 +119,6 @@ def pole_overview(url):
         'Adresse': address,
         'Pole Studio Beschreibung': pole_studio_description,
         'Start Preis': starting_price,
-        'Schnupperkurspreis': taster_course_price,
         'Ratingscore': ratingscore,
         'Reviewanzahl': ratingcount,
         # 'Rating Faktoren': [ratingfactors],
@@ -133,9 +127,6 @@ def pole_overview(url):
         'Telefon': contact_row['Telefon'],
         'Eversports Pole Studio Seite': url
     }
-
-    # create pandas dataframe
-    pole_studio_overview_df = pd.DataFrame([pole_studio_overview])
 
     # create pandas dataframe
     pole_studio_overview_df = pd.DataFrame([pole_studio_overview])
@@ -151,7 +142,7 @@ def pole_overview(url):
 
     # create the "CSV" directory if it does not exist
     # if not os.path.exists("PoleStudio_CSV"):
-        # os.makedirs("PoleStudio_CSV")
+    # os.makedirs("PoleStudio_CSV")
 
     # save the CSV file in the "CSV" directory
     # pole_studio_overview_df.to_csv(
